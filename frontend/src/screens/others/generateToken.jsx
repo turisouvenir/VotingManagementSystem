@@ -90,7 +90,7 @@ const GenerateToken = ({ navigation }) => {
             </View>
 
             {authError !== '' && (
-              <Text style={tw`mt-4 text-red-500 text-center`}>{authError}</Text>
+              <Text style={tw`mt-4 text-red-500 text-center w-[85%] mx-auto`}>{authError}</Text>
             )}
             <View style={tw`mt-8`}>
               <View style={tw`px-6 py-2`}>

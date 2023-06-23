@@ -69,7 +69,7 @@ const DisplayTokens = ({ navigation }) => {
                 }
                 else {
                     setTokens([])
-                    setAuthError("No tokens for that meter");
+                    setAuthError("No tokens for that meter number");
                 }
             }
             else {

@@ -11,7 +11,7 @@ const {
   
     /**
    * @swagger
-   * /api/token:
+   * /token:
    *   post:
    *     summary: Create a new token
    *     tags: [Token]
@@ -36,7 +36,7 @@ const {
    *       '401':
    *         description: Unauthorized
    */
-  router.post('/', auth, createToken);
+  router.post('/', auth,createToken);
   
     /**
      * @swagger
