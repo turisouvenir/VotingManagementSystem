@@ -14,38 +14,6 @@ export const register = async (data) => {
     
 }
 
-export const createCandidate = async (data) => {
-    return axios.post(API_URL+'/candidates', data, {
-        headers: {
-            'Authorization': 'Bearer ' + await _getToken()
-        }
-    })
-    .then((res) => {
-        return {...res?.data,success: true}
-    })
-    .catch((err) => {
-        return err?.response?.data;
-    }
-    )
-    
-}
-
-export const createVote = async (data) => {
-    return axios.post(API_URL+'/votes', data, {
-        headers: {
-            'Authorization': 'Bearer ' + await _getToken()
-        }
-    })
-    .then((res) => {
-        return {...res?.data,success: true}
-    })
-    .catch((err) => {
-        return err?.response?.data;
-    }
-    )
-    
-}
-
 export const login = async (data) => {
     return axios.post(API_URL+'/users/login', data)
     .then((res) => {
@@ -73,9 +41,40 @@ export const getProfile = async () => {
     }
     )
 }
+export const validateToken=async(token)=>{
+    return axios.get(API_URL+`/token/validate/${token}`, {
+        headers: {
+            'Authorization': 'Bearer ' + await _getToken()
+        }
+    })
+    .then((res) => {
+        return res?.data
+    }
+    )
+    .catch((err) => {
+        return err?.response?.data;
+    }
+    )
+}
 
-export const getCandidates = async () => {
-    return axios.get(API_URL+'/candidates', {
+export const generateToken=async(data)=>{
+    return axios.post(API_URL+`/token`,data, {
+       headers: {
+            'Authorization': 'Bearer ' + await _getToken()
+        }
+    })
+    .then((res) => {
+        return res?.data
+    }
+    )
+    .catch((err) => {
+        return err?.response?.data;
+    }
+    )
+}
+
+export const getAllTokensByMeterNumber=async(meterNumber)=>{
+    return axios.get(API_URL+`/token/meter/${meterNumber}`, {
         headers: {
             'Authorization': 'Bearer ' + await _getToken()
         }

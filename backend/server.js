@@ -12,9 +12,9 @@ const host = process.env.HOST || "localhost";
 const swaggerOptions = {
   swaggerDefinition: {
       info: {
-          title: "Vehicle Tracking Management System API Documentation",
+          title: "Tokens Generation System API Documentation",
           version: "1.0.0",
-          description: "Explore the Vehicle Tracking Management System",
+          description: "Explore the Tokens Generation System",
       },
       schemes: [process.env.NODE_ENV === "production" ? "https" : "http"],
       host: host+":"+PORT,

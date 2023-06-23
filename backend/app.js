@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const morgan = require('morgan');
 
 const app = express();
 
@@ -13,6 +14,9 @@ app.use(express.json());
 app.use(
     express.urlencoded({ extended: true })
 );
+
+// Add morgan middleware for logging
+app.use(morgan('combined'));
 
 const db = require("./app/models");
 db.mongoose
@@ -34,7 +38,6 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/user.routes")(app);
-require("./app/routes/candidate.routes")(app);
-require("./app/routes/votes.routes")(app);
+require("./app/routes/token.routes")(app);
 
 module.exports = app;

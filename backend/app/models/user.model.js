@@ -21,9 +21,6 @@ const jwt = require('jsonwebtoken');
  *         type: string
  *       nationalId:
  *         type: string
- *       category:
- *         type: string
- *         enum: ['ADMIN','VOTER']
  *     required:
  *       - names
  *       - address
@@ -31,7 +28,6 @@ const jwt = require('jsonwebtoken');
  *       - password
  *       - phone
  *       - nationalId
- *       - category
  */
 
 var schema = mongoose.Schema({
@@ -61,12 +57,7 @@ var schema = mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-    enum: ['ADMIN','VOTER']
-  },
+  }
 }, {
   timestamps: true
 });
@@ -93,7 +84,6 @@ module.exports.validateUser = (body,isUpdating=false) => {
     phone: Joi.string().pattern(this.PhoneRegex).required(), // validate phone
     password: isUpdating ? Joi.string().min(6) : Joi.string().min(6).required(),
     nationalId: Joi.string().pattern(this.NationalIdPattern).length(16).required(),
-    category: Joi.string().valid('ADMIN','VOTER').required()
   }).validate(body);
 };
 

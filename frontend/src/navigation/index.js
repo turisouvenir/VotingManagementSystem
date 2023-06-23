@@ -2,7 +2,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/auth/login';
 import { useEffect, useState } from 'react';
 import Home from '../screens/others';
-import AddCandidate from '../screens/others/createCandidate';
+import GenerateToken from '../screens/others/generateToken';
+import ValidateToken from '../screens/others/validateToken';
+import DisplayTokens from '../screens/others/displayTokens';
 import Register from '../screens/auth/register';
 
 // const Tabs = createBottomTabNavigator()
@@ -67,10 +69,21 @@ export function AppNavigation() {
           />
 
           <Stack.Screen 
-              name="AddCandidate"
-              component={AddCandidate}
+              name="ValidateToken"
+              component={ValidateToken}
               options={{headerShown: false}}
           />
+          <Stack.Screen 
+              name="GenerateToken"
+              component={GenerateToken}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen 
+              name="DisplayTokens"
+              component={DisplayTokens}
+              options={{headerShown: false}}
+          />
+          
 
       </Stack.Navigator>
   )
